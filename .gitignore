@@ -1,0 +1,52 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Node.js
+
+node_modules/
+dist/
+coverage/
+
+# IDE
+
+.vscode/
+.idea/
+
+# Operating System
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+*.log
+
+# Build Files
+
+build/
+
+# Environment Files
+
+.env.local
+.env.production
+.env.development
+
+# Database
+
+*.db
+
+# Cache
+
+.pytest_cache/
+.mypy_cache/
+.eslintcache
+
+# Misc
+
+*.swp
