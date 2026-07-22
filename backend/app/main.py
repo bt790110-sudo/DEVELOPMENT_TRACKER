@@ -6,6 +6,7 @@ from app.api.v1.api import api_router
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
 from app.core.logging import logger
+from app.core.middleware import register_middleware
 
 
 @asynccontextmanager
@@ -23,15 +24,15 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+register_middleware(app)
 register_exception_handlers(app)
-
 app.include_router(
     api_router,
     prefix="/api/v1",
 )
 
 
-@app.get("/")
+@app.get("/",tags=["Root"])
 def root():
     logger.info("Root endpoint accessed")
 
