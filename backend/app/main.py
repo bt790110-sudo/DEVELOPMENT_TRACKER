@@ -4,15 +4,16 @@ from fastapi import FastAPI
 
 from app.api.v1.api import api_router
 from app.core.config import settings
+from app.core.logging import logger
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("Starting DevelopmentTracker API...")
+    logger.info("Starting DevelopmentTracker API")
 
     yield
 
-    print("Stopping DevelopmentTracker API...")
+    logger.info("Stopping DevelopmentTracker API")
 
 
 app = FastAPI(
@@ -21,14 +22,13 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-app.include_router(
-    api_router,
-    prefix="/api/v1",
-)
+app.include_router(api_router, prefix="/api/v1")
 
 
 @app.get("/", tags=["Root"])
 def root():
+    logger.info("Root endpoint accessed")
+
     return {
         "application": settings.APP_NAME,
         "version": settings.API_VERSION,

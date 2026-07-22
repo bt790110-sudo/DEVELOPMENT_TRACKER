@@ -50,3 +50,6 @@ build/
 # Misc
 
 *.swp
+
+# Log files
+logs/
