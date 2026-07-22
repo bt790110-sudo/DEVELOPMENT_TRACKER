@@ -1,13 +1,17 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 app = FastAPI(
-    title="DevelopmentTracker API",
-    version="1.0.0",
+    title=settings.APP_NAME,
+    version=settings.API_VERSION,
 )
 
 
 @app.get("/")
 def root():
     return {
-        "message": "Welcome to DevelopmentTracker API!"
+        "application": settings.APP_NAME,
+        "version": settings.API_VERSION,
+        "debug": settings.DEBUG,
     }
